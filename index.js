@@ -3,7 +3,7 @@ const fs = require("fs");
 // const path = require('path');
 const util = require("util");
 
-const writeFileAsync = util.promisify(fs.writeFile);
+// const writeFileAsync = util.promisify(fs.writeFile);
 
 function promptUser() {
     return inquirer.prompt([{
@@ -66,7 +66,7 @@ function promptUser() {
     ]);
 }
 
-function generateMd(answers) { `
+function generateMd(answers) { return `
   # ${answers.title} 
   ${answers.description}
   \n* [Installation](#Installation)
@@ -92,9 +92,9 @@ function generateMd(answers) { `
 
 promptUser()
     .then(function(answers) {
-        const Md = generateMd(answers);
+        const Md = generateMd({...answers }); //... give an object with no definite number of arguments
 
-        return writeFileAsync("README.md", Md);
+        return fs.writeFileSync("README.md", Md);
     })
     .then(function() {
         console.log("Successfully wrote to README.md");
