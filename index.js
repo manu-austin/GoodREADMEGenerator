@@ -1,8 +1,9 @@
 const inquirer = require("inquirer");
-const axios = require("axios");
 const fs = require("fs");
-const path = require('path');
+// const path = require('path');
+const util = require("util");
 
+const writeFileAsync = util.promisify(fs.writeFile);
 
 function promptUser() {
     return inquirer.prompt([{
@@ -65,9 +66,9 @@ function promptUser() {
     ]);
 }
 
-var result = (`
-  # ${answer.title} 
-  ${answer.description}
+function generateMd(answers) { `
+  # ${answers.title} 
+  ${answers.description}
   \n* [Installation](#Installation)
   \n* [Instructions](#Instructions)
   \n* [License](#License)
@@ -75,32 +76,32 @@ var result = (`
   \n* [Author](#Author)
   \n* [Tests](#Tests)
   ## Installation
-  ${answer.installationInstructions}
+  ${answers.installationInstructions}
   ## Instructions
-  ${answer.usageInformation}
+  ${answers.usageInformation}
   \`\`\`
-  ${answer.testInstructions}
+  ${answers.testInstructions}
   \`\`\`
   ## License 
-  This project is licensed under the ${answer.licenseList}
+  This project is licensed under the ${answers.licenseList}
   ## Author 
-  \n**${answer.gitHubName}**
-  \nEmail: ${answer.emailAddress}
-  `)
+  \n**${answers.gitHubName}**
+  \nEmail: ${answers.emailAddress}
+  ` }
 
 
 promptUser()
     .then(function(answers) {
-        const result = generateMd(answers);
+        const Md = generateMd(answers);
 
-        return writeResult("index.html", html);
+        return writeFileAsync("README.md", Md);
     })
     .then(function() {
-        console.log("Successfully wrote to index.html");
+        console.log("Successfully wrote to README.md");
     })
     .catch(function(err) {
         console.log(err);
     });
 
 
-var writeResult = fs.writeFileSync(path.join(__dirname, '../GoodREADMeGenerator', 'readMe.md'), result)
+// var writeResult = fs.writeFileSync(path.join(__dirname, '../GoodREADMeGenerator', 'readMe.md'), result)

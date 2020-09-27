@@ -1,22 +1,24 @@
 {
-    "name": "goodreadmegenerator",
-    "version": "1.0.0",
-    "description": "generator of a good readme",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/manu-austin/GoodREADMEGenerator/issues",
-        "dependencies": {
-            "inquirer": "^6.3.1"
-        }
-    },
-    "homepage": "https://github.com/manu-austin/GoodREADMEGenerator#readme",
-    "dependencies": {
-        "axios": "^0.19.2",
-        "inquirer": "^7.0.4"
-    }
+  "name": "goodreadmegenerator",
+  "version": "1.0.0",
+  "description": "generator of a good readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manu-austin/GoodREADMEGenerator/issues"
+  },
+  "homepage": "https://github.com/manu-austin/GoodREADMEGenerator#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.0.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manu-austin/GoodREADMEGenerator.git"
+  }
 }
