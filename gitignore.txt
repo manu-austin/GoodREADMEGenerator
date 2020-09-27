@@ -1,5 +1,5 @@
 node_modules
-usefullLinks.txt
+.DS_Store/
 package-lock.json
 package.json
 .vscode

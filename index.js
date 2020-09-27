@@ -5,42 +5,68 @@ const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 function promptUser() {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?"
-    },
-    {
-      type: "input",
-      name: "location",
-      message: "Where are you from?"
-    },
-    {
-      type: "input",
-      name: "hobby",
-      message: "What is your favorite hobby?"
-    },
-    {
-      type: "input",
-      name: "food",
-      message: "What is your favorite food?"
-    },
-    {
-      type: "input",
-      name: "github",
-      message: "Enter your GitHub Username"
-    },
-    {
-      type: "input",
-      name: "linkedin",
-      message: "Enter your LinkedIn URL."
-    }
-  ]);
+    return inquirer.prompt([{
+            type: "input",
+            name: "title",
+            message: "What is the title of your project?"
+        },
+        {
+            type: "input",
+            name: "description",
+            message: "Please provide a description of your project"
+        },
+        {
+            type: "input",
+            name: "installationInstructions",
+            message: "What are the steps for the installation of the application?"
+        },
+        {
+            type: "input",
+            name: "usageInformation",
+            message: "Please explain how to use the application"
+        },
+        {
+            type: "input",
+            name: "contributionGuidelines",
+            message: "Please give guidelines for contributing to the project"
+        },
+        {
+            type: "input",
+            name: "testInstructions",
+            message: "How can user test this application?"
+        },
+        {
+            type: "list",
+            name: "licenseList",
+            message: "Please pick a license for this application from the list below",
+            choices: [
+                "Apache License 2.0",
+                "BSD 3-Clause 'New' or 'Revised' license",
+                "BSD 2-Clause 'Simplified' or 'FreeBSD' license",
+                "GNU General Public License (GPL)",
+                "GNU Library or 'Lesser' General Public License (LGPL)",
+                "MIT license",
+                "Mozilla Public License 2.0",
+                "Common Development and Distribution License",
+                "Eclipse Public License version 2.0",
+            ]
+        },
+        {
+            type: "input",
+            name: "gitHubName",
+            message: "What is your gitHub username?"
+        },
+        {
+            type: "input",
+            name: "emailAddress",
+            message: "What is your email address?"
+        },
+
+    ]);
 }
 
 function generateHTML(answers) {
-  return `
+    return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,14 +92,14 @@ function generateHTML(answers) {
 }
 
 promptUser()
-  .then(function(answers) {
-    const html = generateHTML(answers);
+    .then(function(answers) {
+        const html = generateHTML(answers);
 
-    return writeFileAsync("index.html", html);
-  })
-  .then(function() {
-    console.log("Successfully wrote to index.html");
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
+        return writeFileAsync("index.html", html);
+    })
+    .then(function() {
+        console.log("Successfully wrote to index.html");
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
