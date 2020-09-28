@@ -22,6 +22,11 @@
   ```
   ## License 
   This project is licensed under the MIT license
+  
+  ### Terminal Screen Shot
+<img src="assets/Terminal_View1.png" alt="Terminal_View" />
+  
+  
   ## Author 
   
 **manu-austin**
